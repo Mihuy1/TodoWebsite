@@ -21,7 +21,7 @@ const todoArray = [
 const Home = () => {
   return (
     <>
-      <h2>My Tasks</h2>
+      <h2>Tasks</h2>
       <form>
         <input
           type="text"
