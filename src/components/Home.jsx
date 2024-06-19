@@ -16,6 +16,11 @@ const todoArray = [
     name: 'Task 3',
     details: 'This is Task 3',
   },
+  {
+    id: 4,
+    name: 'Task 4',
+    details: 'This is task 4',
+  },
 ];
 
 const Home = () => {
