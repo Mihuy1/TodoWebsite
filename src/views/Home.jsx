@@ -1,5 +1,5 @@
-import Task from './Task.jsx';
-import AddTaskForm from './AddTaskForm.jsx';
+import AddTaskForm from '../components/AddTaskForm.jsx';
+import Task from '../components/Task.jsx';
 
 import React, {useState} from 'react';
 

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 const Task = (props) => {
   const {item, onStatusChange} = props;
@@ -16,6 +17,9 @@ const Task = (props) => {
         onChange={handleCheckboxChange}
       />{' '}
       {item.status ? 'True' : 'False'}
+      <Link to="/singleView" state={{item}}>
+        Show
+      </Link>{' '}
     </>
   );
 };
