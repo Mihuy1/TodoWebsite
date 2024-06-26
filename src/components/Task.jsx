@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
+import EditTaskForm from './EditTaskForm';
 
 const Task = (props) => {
   const {item, onStatusChange, handleSaveTask, handleEditTask, editingTaskId} =
@@ -20,13 +21,7 @@ const Task = (props) => {
       {item.status ? 'True' : 'False'}
       <button onClick={() => handleEditTask(item.id)}>Edit</button>
       {editingTaskId === item.id && (
-        <>
-          <form onSubmit={(event) => handleSaveTask(event, item.id)}>
-            <input type="text" name="name" defaultValue={item.name} />
-            <input type="text" name="details" defaultValue={item.details} />
-            <button type="submit">Save</button>
-          </form>
-        </>
+        <EditTaskForm item={item} handleSaveTask={handleSaveTask} />
       )}
       <Link to="/singleView" state={{item}}>
         Show
