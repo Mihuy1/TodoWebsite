@@ -1,7 +1,7 @@
 import AddTaskForm from '../components/AddTaskForm.jsx';
 import Task from '../components/Task.jsx';
 
-import React, {useState} from 'react';
+import {useState} from 'react';
 
 const initialTodoArray = [
   {
@@ -33,6 +33,7 @@ const initialTodoArray = [
 const Home = () => {
   const [todoArray, setTodoArray] = useState(initialTodoArray);
   const [newTaskName, setNewTaskName] = useState('');
+  const [editingTaskId, setEditingTaskId] = useState(null);
 
   const handleStatusChange = (id, newStatus) => {
     const updatedTasks = todoArray.map((task) =>
@@ -57,8 +58,26 @@ const Home = () => {
     setNewTaskName('');
   };
 
+  const handleEditTask = (id) => {
+    setEditingTaskId(id);
+  };
+
+  // Adjusted handleSaveTask function
+  const handleSaveTask = (event, id) => {
+    event.preventDefault();
+    const form = event.target;
+    const newName = form.elements.name.value;
+    const newDetails = form.elements.details.value;
+    const updatedTasks = todoArray.map((task) =>
+      task.id === id ? {...task, name: newName, details: newDetails} : task,
+    );
+    setTodoArray(updatedTasks);
+    setEditingTaskId(null);
+  };
+
   return (
     <>
+      {' '}
       <h2>Tasks</h2>
       <AddTaskForm
         newTaskName={newTaskName}
@@ -66,7 +85,14 @@ const Home = () => {
         handleAddTask={handleAddTask}
       />
       {todoArray.map((item) => (
-        <Task key={item.id} item={item} onStatusChange={handleStatusChange} />
+        <Task
+          key={item.id}
+          item={item}
+          onStatusChange={handleStatusChange}
+          handleEditTask={handleEditTask}
+          handleSaveTask={handleSaveTask}
+          editingTaskId={editingTaskId}
+        />
       ))}
     </>
   );

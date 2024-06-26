@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import {useLocation, useNavigate} from 'react-router-dom';
 
 const SingleView = () => {
   const {state} = useLocation();
   const item = state.item;
   const navigate = useNavigate();
+
   return (
     <div>
       <h2>{item && item.name}</h2>
