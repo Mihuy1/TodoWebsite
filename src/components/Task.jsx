@@ -3,12 +3,14 @@ import {Link} from 'react-router-dom';
 import EditTaskForm from './EditTaskForm';
 
 const Task = (props) => {
-  const {item, onStatusChange, handleSaveTask, handleEditTask, editingTaskId} =
-    props;
+  const {item, onStatusChange, handleEditTask} = props;
 
   const handleCheckboxChange = (event) => {
     onStatusChange(item.id, event.target.checked);
+    console.log('item in handleCheckboxChange', item.id, event.target.checked);
   };
+
+  console.log('item', item.id);
 
   return (
     <>
@@ -19,10 +21,7 @@ const Task = (props) => {
         onChange={handleCheckboxChange}
       />{' '}
       {item.status ? 'True' : 'False'}
-      <button onClick={() => handleEditTask(item.id)}>Edit</button>
-      {editingTaskId === item.id && (
-        <EditTaskForm item={item} handleSaveTask={handleSaveTask} />
-      )}
+      <EditTaskForm item={item} handleEditTask={handleEditTask} />
       <Link to="/singleView" state={{item}}>
         Show
       </Link>{' '}
@@ -31,10 +30,8 @@ const Task = (props) => {
 };
 
 Task.propTypes = {
-  item: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    status: PropTypes.bool.isRequired,
-  }).isRequired,
+  item: PropTypes.object.isRequired,
+  handleEditTask: PropTypes.func.isRequired,
   onStatusChange: PropTypes.func.isRequired,
 };
 
