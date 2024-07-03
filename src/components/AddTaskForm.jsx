@@ -12,8 +12,18 @@ const AddTaskForm = (props) => {
         handleAddTask(newTaskName, newTaskDetails);
       }}
     >
-      <input type="text" name="name" placeholder="Task name" />
-      <input type="text" name="details" placeholder="Task details" />
+      <input
+        type="text"
+        name="name"
+        className="input__lg"
+        placeholder="Task name"
+      />
+      <input
+        type="text"
+        name="details"
+        className="input__lg"
+        placeholder="Task details"
+      />
       <button type="submit">Add task</button>
     </form>
   );

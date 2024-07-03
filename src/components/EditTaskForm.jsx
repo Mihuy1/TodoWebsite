@@ -16,8 +16,18 @@ const EditTaskForm = (props) => {
         console.log('event', event);
       }}
     >
-      <input type="text" name="name" defaultValue={item.name} />
-      <input type="text" name="details" defaultValue={item.details} />
+      <input
+        type="text"
+        name="name"
+        className="input__sm"
+        defaultValue={item.name}
+      />
+      <input
+        type="text"
+        name="details"
+        className="input__sm"
+        defaultValue={item.details}
+      />
       <button type="submit">Save</button>
     </form>
   );

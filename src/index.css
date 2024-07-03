@@ -44,7 +44,7 @@ textarea {
   font-family: inherit;
   font-size: 100%;
   line-height: 1.15;
-  margin: 0;
+  margin: 1rem;
 }
 button,
 input {
@@ -200,6 +200,12 @@ body {
 [class*='__lg']:not(:last-child) {
   margin-bottom: 1rem;
 }
+
+.input__sm {
+  border: 2px solid #000;
+  padding: 0.8rem;
+}
+
 @media screen and (min-width: 620px) {
   [class*='__lg'] {
     font-size: 2.4rem;
