@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Button from './Button';
 
 const AddTaskForm = (props) => {
   const {handleAddTask} = props;
@@ -24,7 +25,7 @@ const AddTaskForm = (props) => {
         className="input__lg"
         placeholder="Task details"
       />
-      <button type="submit">Add task</button>
+      <Button buttonText="Add Task" />
     </form>
   );
 };

@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
-import {Link} from 'react-router-dom';
-import EditTaskForm from './EditTaskForm';
 
 const Task = (props) => {
-  const {item, onStatusChange, handleEditTask} = props;
+  const {item, onStatusChange} = props;
 
   const handleCheckboxChange = (event) => {
     onStatusChange(item.id, event.target.checked);
@@ -14,17 +12,14 @@ const Task = (props) => {
 
   return (
     <>
-      <h4>{item.name}</h4>
-      <input
-        type="checkbox"
-        checked={item.status}
-        onChange={handleCheckboxChange}
-      />{' '}
-      {item.status ? 'True' : 'False'}
-      <EditTaskForm item={item} handleEditTask={handleEditTask} />
-      <Link to="/singleView" state={{item}}>
-        Show
-      </Link>{' '}
+      <div className="task-container">
+        <input
+          type="checkbox"
+          checked={item.status}
+          onChange={handleCheckboxChange}
+        />{' '}
+        <p>{item.name}</p>
+      </div>
     </>
   );
 };

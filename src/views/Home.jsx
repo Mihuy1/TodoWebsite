@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <>
       {' '}
-      <h2>Tasks</h2>
+      <h1>Tasks</h1>
       <AddTaskForm handleAddTask={handleAddTask} />
       {todoArray.map(
         (item) => (
