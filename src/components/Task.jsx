@@ -4,16 +4,13 @@ import {useState} from 'react';
 import EditTaskForm from './EditTaskForm';
 
 const Task = (props) => {
-  const {item, onStatusChange, handleEditTask} = props;
+  const {item, onStatusChange, handleEditTask, handleDeleteTask} = props;
 
   const [isViewing, setIsViewing] = useState(false);
 
   const handleCheckboxChange = (event) => {
     onStatusChange(item.id, event.target.checked);
-    console.log('item in handleCheckboxChange', item.id, event.target.checked);
   };
-
-  console.log('item', item.id);
 
   return (
     <>
@@ -24,10 +21,18 @@ const Task = (props) => {
           onChange={handleCheckboxChange}
         />{' '}
         <p>{item.name}</p>
-        <Button
-          onClick={() => setIsViewing(!isViewing)}
-          buttonText={isViewing ? 'Hide' : 'View'}
-        />
+        <div>
+          <Button
+            className="button__view"
+            onClick={() => setIsViewing(!isViewing)}
+            buttonText={isViewing ? 'Hide' : 'View'}
+          />
+          <Button
+            className="button__delete"
+            onClick={() => handleDeleteTask(item.id)}
+            buttonText="Delete"
+          />
+        </div>
       </div>
       <div>
         {isViewing && (
@@ -42,6 +47,7 @@ Task.propTypes = {
   item: PropTypes.object.isRequired,
   handleEditTask: PropTypes.func.isRequired,
   onStatusChange: PropTypes.func.isRequired,
+  handleDeleteTask: PropTypes.func.isRequired,
 };
 
 export default Task;

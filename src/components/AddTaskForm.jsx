@@ -10,7 +10,9 @@ const AddTaskForm = (props) => {
         event.preventDefault();
         const newTaskName = event.target.name.value;
         const newTaskDetails = event.target.details.value;
-        handleAddTask(newTaskName, newTaskDetails);
+        const newTaskDate = event.target.date.value;
+
+        handleAddTask(newTaskName, newTaskDetails, newTaskDate);
       }}
     >
       <input
@@ -25,6 +27,7 @@ const AddTaskForm = (props) => {
         className="input__lg"
         placeholder="Task details"
       />
+      <input name="date" aria-label="Date and time" type="datetime-local" />
       <Button buttonText="Add Task" />
     </form>
   );

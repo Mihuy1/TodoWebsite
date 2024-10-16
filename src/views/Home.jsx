@@ -8,6 +8,7 @@ const Home = () => {
     handleAddTask,
     handleEditTask,
     handleSaveTask,
+    handleDeleteTask,
     onStatusChange,
   } = useTask();
 
@@ -18,13 +19,14 @@ const Home = () => {
       <AddTaskForm handleAddTask={handleAddTask} />
       {todoArray.map(
         (item) => (
-          console.log('item', item),
+          console.log('Log from Home.jsx, ' + 'item', item.date),
           (
             <Task
               key={item.id}
               item={item}
               handleEditTask={handleEditTask}
               handleSaveTask={handleSaveTask}
+              handleDeleteTask={handleDeleteTask}
               onStatusChange={onStatusChange}
             />
           )

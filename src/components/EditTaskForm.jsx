@@ -9,25 +9,27 @@ const EditTaskForm = (props) => {
         event.preventDefault();
         const newName = event.target.name.value;
         const newDetails = event.target.details.value;
-        handleEditTask(item.id, newName, newDetails);
-        console.log('item.id', item.id);
-        console.log('newName', newName);
-        console.log('newDetails', newDetails);
-        console.log('event', event);
+        const newDate = event.target.date.value;
+
+        handleEditTask(item.id, newName, newDetails, newDate);
       }}
     >
-      <input
-        type="text"
-        name="name"
-        className="input__sm"
-        defaultValue={item.name}
-      />
-      <input
-        type="text"
-        name="details"
-        className="input__sm"
-        defaultValue={item.details}
-      />
+      <div className="edit_task_form">
+        <textarea
+          type="text"
+          name="details"
+          className="input__sm"
+          defaultValue={item.details}
+          rows={4}
+          cols={40}
+        />
+        <input
+          name="date"
+          aria-label="Date and time"
+          type="datetime-local"
+          defaultValue={item.date}
+        />{' '}
+      </div>
       <button type="submit">Save</button>
     </form>
   );

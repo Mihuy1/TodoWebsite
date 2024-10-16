@@ -310,7 +310,7 @@ body {
   margin-right: 1rem;
 }
 
-.custom-button {
+.button__view {
   background-color: #000;
   border: none;
   color: #fff;
@@ -319,6 +319,30 @@ body {
   padding: 0.8rem 1rem;
 }
 
-.custom-button:hover {
+.button__view:hover {
   background-color: #4d4d4d;
+}
+
+.button__delete {
+  background-color: #ca3c3c;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+  padding: 0.8rem 1rem;
+}
+
+.button__delete:hover {
+  background-color: #bd2130;
+}
+
+.edit_task_form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit_task_form textarea,
+form input[type='datetime-local'] {
+  width: 100%;
+  margin-bottom: 1rem;
 }
