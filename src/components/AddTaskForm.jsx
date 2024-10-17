@@ -24,11 +24,11 @@ const AddTaskForm = (props) => {
       <input
         type="text"
         name="details"
-        className="input__lg"
+        className="input__sm"
         placeholder="Task details"
       />
       <input name="date" aria-label="Date and time" type="datetime-local" />
-      <Button buttonText="Add Task" />
+      <Button className="add__button" buttonText="Add Task" />
     </form>
   );
 };

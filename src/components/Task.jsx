@@ -7,20 +7,23 @@ const Task = (props) => {
   const {item, onStatusChange, handleEditTask, handleDeleteTask} = props;
 
   const [isViewing, setIsViewing] = useState(false);
+  const [isChecked, setIsChecked] = useState(item.status);
 
   const handleCheckboxChange = (event) => {
     onStatusChange(item.id, event.target.checked);
+    setIsChecked(event.target.checked);
   };
 
   return (
     <>
       <div className="task-container">
         <input
+          className="c-cb"
           type="checkbox"
           checked={item.status}
           onChange={handleCheckboxChange}
         />{' '}
-        <p>{item.name}</p>
+        <p className={isChecked ? 'strikethrough' : ''}> {item.name}</p>
         <div>
           <Button
             className="button__view"

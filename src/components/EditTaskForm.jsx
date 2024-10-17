@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Button from './Button';
 
 const EditTaskForm = (props) => {
   const {item, handleEditTask} = props;
@@ -30,7 +31,7 @@ const EditTaskForm = (props) => {
           defaultValue={item.date}
         />{' '}
       </div>
-      <button type="submit">Save</button>
+      <Button className="edit__button" buttonText="Edit Task" />
     </form>
   );
 };
