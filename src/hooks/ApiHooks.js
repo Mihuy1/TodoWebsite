@@ -14,31 +14,45 @@ const useTask = () => {
     localStorage.setItem('tasks', JSON.stringify(todoArray));
   }, [todoArray]);
 
-  const handleAddTask = (newTaskName, newTaskDetails, newTaskDate) => {
+  const handleAddTask = (
+    newTaskName,
+    newTaskDetails,
+    newTaskDate,
+    taskCritical,
+  ) => {
     const newTask = {
       id: todoArray.length + 1,
       name: newTaskName,
       details: newTaskDetails,
       date: newTaskDate,
       status: false,
+      critical: taskCritical,
     };
     console.log('newTask', newTask);
     setTodoArray([...todoArray, newTask]);
   };
 
-  const handleSaveTask = (id, newName, newDetails) => {
+  const handleSaveTask = (id, newName, newDetails, newCritical) => {
     const updatedTasks = todoArray.map((task) =>
-      task.id === id ? {...task, name: newName, details: newDetails} : task,
+      task.id === id
+        ? {...task, name: newName, details: newDetails, critical: newCritical}
+        : task,
     );
     setTodoArray(updatedTasks);
     console.log('updatedTasks', updatedTasks);
     console.log('new todoArray', todoArray);
   };
 
-  const handleEditTask = (id, newName, newDetails, newDate) => {
+  const handleEditTask = (id, newName, newDetails, newDate, newCritical) => {
     const updatedTasks = todoArray.map((task) =>
       task.id === id
-        ? {...task, name: newName, details: newDetails, date: newDate}
+        ? {
+            ...task,
+            name: newName,
+            details: newDetails,
+            date: newDate,
+            critical: newCritical,
+          }
         : task,
     );
     setTodoArray(updatedTasks);

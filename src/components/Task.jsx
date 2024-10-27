@@ -2,11 +2,12 @@ import PropTypes from 'prop-types';
 import Button from './Button';
 import {useState} from 'react';
 import EditTaskForm from './EditTaskForm';
+import Popup from 'reactjs-popup';
+import './Task.css';
 
 const Task = (props) => {
   const {item, onStatusChange, handleEditTask, handleDeleteTask} = props;
 
-  const [isViewing, setIsViewing] = useState(false);
   const [isChecked, setIsChecked] = useState(item.status);
 
   const handleCheckboxChange = (event) => {
@@ -23,24 +24,41 @@ const Task = (props) => {
           checked={item.status}
           onChange={handleCheckboxChange}
         />{' '}
-        <p className={isChecked ? 'strikethrough' : ''}> {item.name}</p>
+        <p
+          className={`${isChecked ? 'strikethrough' : ''} ${item.critical ? 'critical' : ''}`}
+        >
+          {item.name}
+        </p>
+        <p
+          className={`${isChecked ? 'strikethrough' : ''} ${item.critical ? 'critical' : ''}`}
+        >
+          {item.details}
+        </p>
         <div>
-          <Button
-            className="button__view"
-            onClick={() => setIsViewing(!isViewing)}
-            buttonText={isViewing ? 'Hide' : 'View'}
-          />
+          <Popup
+            trigger={<Button className={'edit__button'} buttonText="Edit" />}
+            modal
+            nested
+          >
+            {(close) => (
+              <div className="modal">
+                <div className="content">
+                  {' '}
+                  <EditTaskForm
+                    item={item}
+                    handleEditTask={handleEditTask}
+                    close={close}
+                  />{' '}
+                </div>
+              </div>
+            )}
+          </Popup>
           <Button
             className="button__delete"
             onClick={() => handleDeleteTask(item.id)}
             buttonText="Delete"
           />
         </div>
-      </div>
-      <div>
-        {isViewing && (
-          <EditTaskForm item={item} handleEditTask={handleEditTask} />
-        )}
       </div>
     </>
   );
