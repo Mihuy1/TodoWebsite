@@ -56,6 +56,7 @@ const useTask = () => {
         : task,
     );
     setTodoArray(updatedTasks);
+    sortTasksByDate(todoArray);
   };
 
   const handleDeleteTask = (id) => {
