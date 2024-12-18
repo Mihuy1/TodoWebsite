@@ -10,7 +10,10 @@ const Home = () => {
     handleSaveTask,
     handleDeleteTask,
     onStatusChange,
+    sortTasksByDate,
   } = useTask();
+
+  sortTasksByDate(todoArray);
 
   return (
     <>

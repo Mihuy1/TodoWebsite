@@ -14,6 +14,8 @@ const AddTaskForm = (props) => {
         const taskCritical = event.target.critical.checked;
 
         handleAddTask(newTaskName, newTaskDetails, newTaskDate, taskCritical);
+
+        event.target.reset();
       }}
     >
       <div>

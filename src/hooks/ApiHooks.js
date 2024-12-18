@@ -70,6 +70,10 @@ const useTask = () => {
     setTodoArray(updatedTasks);
   };
 
+  const sortTasksByDate = (tasks) => {
+    return tasks.sort((a, b) => new Date(a.date) - new Date(b.date));
+  };
+
   return {
     todoArray,
     handleAddTask,
@@ -77,6 +81,7 @@ const useTask = () => {
     handleEditTask,
     handleDeleteTask,
     onStatusChange,
+    sortTasksByDate,
   };
 };
 

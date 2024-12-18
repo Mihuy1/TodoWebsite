@@ -10,6 +10,18 @@ const Task = (props) => {
 
   const [isChecked, setIsChecked] = useState(item.status);
 
+  const formatDate = (dateString) => {
+    const options = {
+      weekday: 'short',
+      day: '2-digit',
+      month: 'short',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    };
+    return new Date(dateString).toLocaleString('en-US', options);
+  };
+
   const handleCheckboxChange = (event) => {
     onStatusChange(item.id, event.target.checked);
     setIsChecked(event.target.checked);
@@ -33,6 +45,12 @@ const Task = (props) => {
           className={`${isChecked ? 'strikethrough' : ''} ${item.critical ? 'critical' : ''}`}
         >
           {item.details}
+        </p>
+        <p
+          className={`${isChecked ? 'strikethrough' : ''} ${item.critical ? 'critical' : ''}`}
+        >
+          {' '}
+          {formatDate(item.date)}{' '}
         </p>
         <div>
           <Popup
