@@ -27,6 +27,12 @@ const Task = (props) => {
     setIsChecked(event.target.checked);
   };
 
+  const isDatePassed = (dateString) => {
+    const taskDate = new Date(dateString);
+    const currentDate = new Date();
+    return taskDate < currentDate;
+  };
+
   return (
     <>
       <div className="task-container">
@@ -36,22 +42,13 @@ const Task = (props) => {
           checked={item.status}
           onChange={handleCheckboxChange}
         />{' '}
-        <p
-          className={`${isChecked ? 'strikethrough' : ''} ${item.critical ? 'critical' : ''}`}
-        >
-          {item.name}
-        </p>
-        <p
-          className={`${isChecked ? 'strikethrough' : ''} ${item.critical ? 'critical' : ''}`}
-        >
-          {item.details}
-        </p>
-        <p
-          className={`${isChecked ? 'strikethrough' : ''} ${item.critical ? 'critical' : ''}`}
-        >
-          {' '}
-          {formatDate(item.date)}{' '}
-        </p>
+        <div className={`${isChecked ? 'strikethrough' : ''}`}>
+          <div className="task-details">
+            <p>{item.name}</p>
+            <p className="task-description">{item.details}</p>
+            <p className="task-date">{formatDate(item.date)} </p>
+          </div>
+        </div>
         <div>
           <Popup
             trigger={<Button className={'edit__button'} buttonText="Edit" />}

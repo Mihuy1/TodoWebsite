@@ -62,6 +62,22 @@
   cursor: pointer;
 }
 
+.task-details p {
+  margin: 0;
+}
+
+.task-description {
+  font-size: 1.2rem;
+}
+
 .edit__button:hover {
   background-color: darkblue;
+}
+
+.date-passed {
+  color: red;
+}
+
+.task-date {
+  font-size: 1.2rem;
 }
