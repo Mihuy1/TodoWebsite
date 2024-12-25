@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import Button from './Button';
+import plus from '/src/assets/plus.svg';
 
 const AddTaskForm = (props) => {
   const {handleAddTask} = props;
@@ -18,18 +19,18 @@ const AddTaskForm = (props) => {
         event.target.reset();
       }}
     >
-      <div>
+      <div className="add__task__form">
         <input
           type="text"
           name="name"
           className="input__lg"
-          placeholder="Task name"
+          placeholder="Clean house tomorrow afternoon"
         />
         <input
           type="text"
           name="details"
           className="input__sm"
-          placeholder="Task details"
+          placeholder="Description"
         />
       </div>
 

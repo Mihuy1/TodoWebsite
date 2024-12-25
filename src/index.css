@@ -177,6 +177,13 @@ body {
   max-width: 100%;
   text-align: center;
 }
+
+.add__task__form {
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
+
 .label__lg {
   line-height: 1.01567;
   font-weight: 300;
@@ -185,12 +192,13 @@ body {
   text-align: center;
 }
 .input__lg {
-  border: 2px solid #000;
+  border: none;
   padding: 2rem;
+  margin-left: 0;
 }
-.input__lg:focus-visible {
-  border-color: #4d4d4d;
-  box-shadow: inset 0 0 0 2px;
+
+.input__lg:focus {
+  outline: none;
 }
 [class*='__lg'] {
   display: inline-block;
@@ -202,15 +210,17 @@ body {
 }
 
 .input__sm {
-  border: 2px solid #000;
+  border: none;
   padding: 0.8rem;
+  margin-left: 2rem;
+  margin-top: 0rem;
+  font-size: medium;
 }
 
-@media screen and (min-width: 620px) {
-  [class*='__lg'] {
-    font-size: 2.4rem;
-  }
+.input__sm:focus {
+  outline: none;
 }
+
 /* End general app styles */
 /* Todo item styles */
 .todo {
