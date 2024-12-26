@@ -23,14 +23,14 @@ const EditTaskForm = (props) => {
           name="name"
           className="input__lg"
           defaultValue={item.name}
+          placeholder="Task Name"
         />
-        <textarea
+        <input
           type="text"
           name="details"
           className="input__sm"
           defaultValue={item.details}
-          rows={4}
-          cols={40}
+          placeholder="Details"
         />
         <input
           name="date"

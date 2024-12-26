@@ -20,21 +20,16 @@ const Home = () => {
       {' '}
       <h1>Tasks</h1>
       <AddTaskForm handleAddTask={handleAddTask} />
-      {todoArray.map(
-        (item) => (
-          console.log('Log from Home.jsx, ' + 'item', item.date),
-          (
-            <Task
-              key={item.id}
-              item={item}
-              handleEditTask={handleEditTask}
-              handleSaveTask={handleSaveTask}
-              handleDeleteTask={handleDeleteTask}
-              onStatusChange={onStatusChange}
-            />
-          )
-        ),
-      )}
+      {todoArray.map((item) => (
+        <Task
+          key={item.id}
+          item={item}
+          handleEditTask={handleEditTask}
+          handleSaveTask={handleSaveTask}
+          handleDeleteTask={handleDeleteTask}
+          onStatusChange={onStatusChange}
+        />
+      ))}
     </>
   );
 };

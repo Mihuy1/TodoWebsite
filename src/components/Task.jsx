@@ -42,7 +42,9 @@ const Task = (props) => {
           checked={item.status}
           onChange={handleCheckboxChange}
         />{' '}
-        <div className={`${isChecked ? 'strikethrough' : ''}`}>
+        <div
+          className={`${isChecked ? 'strikethrough' : ''} ${isDatePassed(item.date) ? 'date-passed' : ''} ${item.critical ? 'critical' : ''}`}
+        >
           <div className="task-details">
             <p>{item.name}</p>
             <p className="task-description">{item.details}</p>
