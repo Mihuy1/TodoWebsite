@@ -12,16 +12,25 @@ export const Layout = () => {
         <nav>
           <ul>
             <li>
-              <Button buttonText="All" onClick={() => setGroup('all')} />
+              <Button
+                className={'add__button'}
+                buttonText="All"
+                onClick={() => setGroup('all')}
+              />
             </li>
             <li>
               <Button
+                className={'add__button'}
                 buttonText="Personal"
                 onClick={() => setGroup('personal')}
               />
             </li>
             <li>
-              <Button buttonText="Work" onClick={() => setGroup('work')} />
+              <Button
+                className={'add__button'}
+                buttonText="Work"
+                onClick={() => setGroup('work')}
+              />
             </li>
           </ul>
         </nav>

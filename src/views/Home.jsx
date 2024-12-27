@@ -29,7 +29,7 @@ const Home = () => {
       {' '}
       <h1>Tasks</h1>
       <AddTaskForm handleAddTask={handleAddTask} />
-      {todoArray.map((item) => (
+      {filteredTodoArray.map((item) => (
         <Task
           key={item.id}
           item={item}
