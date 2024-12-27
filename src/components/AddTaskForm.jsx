@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import Button from './Button';
-import plus from '/src/assets/plus.svg';
 
 const AddTaskForm = (props) => {
   const {handleAddTask} = props;
@@ -13,8 +12,15 @@ const AddTaskForm = (props) => {
         const newTaskDetails = event.target.details.value;
         const newTaskDate = event.target.date.value;
         const taskCritical = event.target.critical.checked;
+        const taskGroup = event.target.group.value;
 
-        handleAddTask(newTaskName, newTaskDetails, newTaskDate, taskCritical);
+        handleAddTask(
+          newTaskName,
+          newTaskDetails,
+          newTaskDate,
+          taskCritical,
+          taskGroup,
+        );
 
         event.target.reset();
       }}
@@ -32,6 +38,14 @@ const AddTaskForm = (props) => {
           className="input__sm"
           placeholder="Description"
         />
+      </div>
+
+      <div>
+        <label htmlFor="group">Group:</label>
+        <select name="group" id="group">
+          <option value="personal">Personal</option>
+          <option value="work">Work</option>
+        </select>
       </div>
 
       <label htmlFor="critical"> Critical:</label>

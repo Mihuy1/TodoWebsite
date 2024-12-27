@@ -12,8 +12,16 @@ const EditTaskForm = (props) => {
         const newDetails = event.target.details.value;
         const newDate = event.target.date.value;
         const newCritical = event.target.critical.checked;
+        const newGroup = event.target.group.value;
 
-        handleEditTask(item.id, newName, newDetails, newDate, newCritical);
+        handleEditTask(
+          item.id,
+          newName,
+          newDetails,
+          newDate,
+          newCritical,
+          newGroup,
+        );
         close();
       }}
     >
@@ -45,6 +53,13 @@ const EditTaskForm = (props) => {
           id="critical"
           defaultChecked={item.critical}
         />
+      </div>
+      <div>
+        <label htmlFor="group">Group:</label>
+        <select name="group" id="group" defaultValue={item.group}>
+          <option value={'personal'}>Personal</option>
+          <option value={'work'}>Work</option>
+        </select>
       </div>
       <Button className="edit__button" buttonText="Edit Task" />
     </form>

@@ -1,5 +1,6 @@
 import AddTaskForm from '../components/AddTaskForm.jsx';
 import Task from '../components/Task.jsx';
+import {useGroup} from '../context/GroupContext.jsx';
 import {useTask} from '../hooks/ApiHooks.js';
 
 const Home = () => {
@@ -14,6 +15,14 @@ const Home = () => {
   } = useTask();
 
   sortTasksByDate(todoArray);
+
+  const {group} = useGroup();
+
+  let filteredTodoArray = todoArray;
+
+  if (group !== 'all') {
+    filteredTodoArray = todoArray.filter((task) => task.group == group);
+  }
 
   return (
     <>

@@ -312,15 +312,6 @@ body {
 }
 /* End checkbox styles */
 
-.task-container {
-  display: flex;
-  align-items: center;
-}
-
-.task-container input[type='checkbox'] {
-  margin-right: 1rem;
-}
-
 .button__view {
   background-color: #000;
   border: none;

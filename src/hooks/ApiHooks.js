@@ -19,6 +19,7 @@ const useTask = () => {
     newTaskDetails,
     newTaskDate,
     taskCritical,
+    taskGroup,
   ) => {
     const newTask = {
       id: todoArray.length + 1,
@@ -27,15 +28,22 @@ const useTask = () => {
       date: newTaskDate,
       status: false,
       critical: taskCritical,
+      group: taskGroup,
     };
     console.log('newTask', newTask);
     setTodoArray([...todoArray, newTask]);
   };
 
-  const handleSaveTask = (id, newName, newDetails, newCritical) => {
+  const handleSaveTask = (id, newName, newDetails, newCritical, newGroup) => {
     const updatedTasks = todoArray.map((task) =>
       task.id === id
-        ? {...task, name: newName, details: newDetails, critical: newCritical}
+        ? {
+            ...task,
+            name: newName,
+            details: newDetails,
+            critical: newCritical,
+            group: newGroup,
+          }
         : task,
     );
     setTodoArray(updatedTasks);
@@ -43,7 +51,14 @@ const useTask = () => {
     console.log('new todoArray', todoArray);
   };
 
-  const handleEditTask = (id, newName, newDetails, newDate, newCritical) => {
+  const handleEditTask = (
+    id,
+    newName,
+    newDetails,
+    newDate,
+    newCritical,
+    newGroup,
+  ) => {
     const updatedTasks = todoArray.map((task) =>
       task.id === id
         ? {
@@ -52,6 +67,7 @@ const useTask = () => {
             details: newDetails,
             date: newDate,
             critical: newCritical,
+            group: newGroup,
           }
         : task,
     );

@@ -1,17 +1,27 @@
-import {Link, Outlet} from 'react-router-dom';
+import {Outlet} from 'react-router-dom';
 import './Layout.css';
+import Button from './Button';
+import {useGroup} from '../context/GroupContext.jsx';
 
 export const Layout = () => {
+  const {setGroup} = useGroup();
+
   return (
     <div>
       <div className="sidebar">
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Button buttonText="All" onClick={() => setGroup('all')} />
             </li>
             <li>
-              <Link to="/profile">Profile</Link>
+              <Button
+                buttonText="Personal"
+                onClick={() => setGroup('personal')}
+              />
+            </li>
+            <li>
+              <Button buttonText="Work" onClick={() => setGroup('work')} />
             </li>
           </ul>
         </nav>

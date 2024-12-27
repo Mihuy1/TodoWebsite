@@ -51,7 +51,7 @@ const Task = (props) => {
             <p className="task-date">{formatDate(item.date)} </p>
           </div>
         </div>
-        <div>
+        <div className="task-buttons">
           <Popup
             trigger={<Button className={'edit__button'} buttonText="Edit" />}
             modal
