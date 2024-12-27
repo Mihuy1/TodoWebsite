@@ -356,6 +356,7 @@ form input[type='datetime-local'] {
   cursor: pointer;
   font-size: 1.6rem;
   padding: 0.8rem 1rem;
+  width: 100px;
 }
 
 .add__button:hover {
