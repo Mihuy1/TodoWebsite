@@ -4,7 +4,7 @@ import Button from './Button';
 import {useGroup} from '../context/GroupContext.jsx';
 
 export const Layout = () => {
-  const {setGroup} = useGroup();
+  const {setGroup, groups} = useGroup();
 
   return (
     <div>
@@ -13,25 +13,20 @@ export const Layout = () => {
           <ul>
             <li>
               <Button
-                className={'add__button'}
+                className="add__button"
                 buttonText="All"
                 onClick={() => setGroup('all')}
               />
             </li>
-            <li>
-              <Button
-                className={'add__button'}
-                buttonText="Personal"
-                onClick={() => setGroup('personal')}
-              />
-            </li>
-            <li>
-              <Button
-                className={'add__button'}
-                buttonText="Work"
-                onClick={() => setGroup('work')}
-              />
-            </li>
+            {groups.map((group) => (
+              <li key={group}>
+                <Button
+                  className="add__button"
+                  buttonText={group.charAt(0).toUpperCase() + group.slice(1)}
+                  onClick={() => setGroup(group)}
+                />
+              </li>
+            ))}
           </ul>
         </nav>
       </div>
