@@ -1,8 +1,27 @@
 import PropTypes from 'prop-types';
 import Button from './Button';
+import {useState} from 'react';
 
 const AddTaskForm = (props) => {
-  const {handleAddTask} = props;
+  const {handleAddTask, groups, setGroups} = props;
+  const [showInput, setShowInput] = useState(false);
+  const [newGroup, setNewGroup] = useState('');
+
+  const handleChange = (event) => {
+    if (event.target.value === 'new') {
+      setShowInput(true);
+    } else {
+      setShowInput(false);
+    }
+  };
+
+  const handleAddGroup = () => {
+    if (newGroup.trim() && !groups.includes(newGroup)) {
+      setGroups([...groups, newGroup]);
+      setNewGroup('');
+      setShowInput(false);
+    }
+  };
 
   return (
     <form
@@ -13,6 +32,11 @@ const AddTaskForm = (props) => {
         const newTaskDate = event.target.date.value;
         const taskCritical = event.target.critical.checked;
         const taskGroup = event.target.group.value;
+
+        if (taskGroup === 'new') {
+          alert('Please choose or create a group');
+          return;
+        }
 
         handleAddTask(
           newTaskName,
@@ -42,10 +66,30 @@ const AddTaskForm = (props) => {
 
       <div>
         <label htmlFor="group">Group:</label>
-        <select name="group" id="group">
-          <option value="personal">Personal</option>
-          <option value="work">Work</option>
+        <select name="group" id="group" onChange={handleChange}>
+          {groups.map((group) => (
+            <option key={group} value={group}>
+              {group.charAt(0).toUpperCase() + group.slice(1)}
+            </option>
+          ))}
+          <option value="new">+ Create New Group</option>
         </select>
+
+        {showInput && (
+          <div>
+            <input
+              type="text"
+              placeholder="Enter new group name"
+              value={newGroup}
+              onChange={(e) => setNewGroup(e.target.value)}
+            ></input>
+            <Button
+              className="add__button"
+              buttonText="Add Group"
+              onClick={handleAddGroup}
+            ></Button>
+          </div>
+        )}
       </div>
 
       <label htmlFor="critical"> Critical:</label>
@@ -60,6 +104,8 @@ const AddTaskForm = (props) => {
 
 AddTaskForm.propTypes = {
   handleAddTask: PropTypes.func.isRequired,
+  groups: PropTypes.array.isRequired,
+  setGroups: PropTypes.func.isRequired,
 };
 
 export default AddTaskForm;

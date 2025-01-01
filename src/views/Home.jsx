@@ -16,7 +16,7 @@ const Home = () => {
 
   sortTasksByDate(todoArray);
 
-  const {group} = useGroup();
+  const {group, groups, setGroups} = useGroup();
 
   let filteredTodoArray = todoArray;
 
@@ -28,7 +28,11 @@ const Home = () => {
     <>
       {' '}
       <h1>Tasks</h1>
-      <AddTaskForm handleAddTask={handleAddTask} />
+      <AddTaskForm
+        handleAddTask={handleAddTask}
+        groups={groups}
+        setGroups={setGroups}
+      />
       {filteredTodoArray.map((item) => (
         <Task
           key={item.id}
