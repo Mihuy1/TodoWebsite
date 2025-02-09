@@ -21,7 +21,7 @@ const Home = () => {
   let filteredTodoArray = todoArray;
 
   if (group !== 'all') {
-    filteredTodoArray = todoArray.filter((task) => task.group == group);
+    filteredTodoArray = todoArray.filter((task) => task.group === group);
   }
 
   return (
