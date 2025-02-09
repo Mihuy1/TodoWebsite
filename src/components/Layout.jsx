@@ -16,8 +16,6 @@ export const Layout = () => {
     document.querySelector(`.${group}`).classList.add('active');
     console.log('clicked on button', group);
   }
-
-
   return (
     <div>
       <div className="sidebar">
