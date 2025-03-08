@@ -33,6 +33,7 @@ const Home = () => {
         groups={groups}
         setGroups={setGroups}
       />
+      <div className={'main-task-container'}>
       {filteredTodoArray.map((item) => (
         <Task
           key={item.id}
@@ -43,6 +44,7 @@ const Home = () => {
           onStatusChange={onStatusChange}
         />
       ))}
+      </div>
     </>
   );
 };

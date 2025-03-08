@@ -366,6 +366,14 @@ form input[type='datetime-local'] {
   background-color: #4d4d4d;
 }
 
+.main-task-container {
+  width: 800px;
+  height: 700px;
+  border: 1px solid black;
+  padding: 10px;
+  overflow: auto;
+}
+
 .add__button:hover {
   background-color: #4d4d4d;
 }
