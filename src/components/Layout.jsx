@@ -9,12 +9,10 @@ export const Layout = () => {
   const setGroupFunc = (group) => {
     setGroup(group);
     const buttons = document.querySelectorAll('.add__button');
-    console.log('buttons', buttons);
     buttons.forEach((button) => {
       button.classList.remove('active');
     });
     document.querySelector(`.${group}`).classList.add('active');
-    console.log('clicked on button', group);
   }
   return (
     <div>
@@ -23,15 +21,17 @@ export const Layout = () => {
           <ul>
             <li>
               <Button
-                className="add__button"
+                className={`add__button all active`}
+                // Also add the name of the group as a class name
+                // to the button element
                 buttonText="All"
-                onClick={() => setGroup('all')}
+                onClick={() => setGroupFunc('all')}
               />
             </li>
             {groups.map((group) => (
               <li key={group}>
                 <Button
-                  className="add__button"
+                  className={`add__button ${group}`}
                   buttonText={group.charAt(0).toUpperCase() + group.slice(1)}
                   onClick={() => setGroupFunc(group)}
                 />

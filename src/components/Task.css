@@ -28,6 +28,10 @@
   border-bottom: 1px solid rebeccapurple;
 }
 
+.task-container input[type='checkbox'] {
+  margin: 0 2rem 0 0;
+}
+
 .task-container .c-cb {
   margin-right: 10px;
 }

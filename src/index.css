@@ -362,8 +362,8 @@ form input[type='datetime-local'] {
   width: 100px;
 }
 
-.add__button:active {
-  background-color: #4d4d4d;
+.active {
+  background-color: purple;
 }
 
 .main-task-container {
