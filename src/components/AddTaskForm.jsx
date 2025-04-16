@@ -1,11 +1,23 @@
 import PropTypes from 'prop-types';
 import Button from './Button';
+import {IoRepeat} from 'react-icons/io5';
 import {useState} from 'react';
+import RepeatModal from './RepeatModal';
 
 const AddTaskForm = (props) => {
   const {handleAddTask, groups, setGroups} = props;
   const [showInput, setShowInput] = useState(false);
   const [newGroup, setNewGroup] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [repeatFreq, setRepeatFreq] = useState('');
+
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => setIsModalOpen(false);
+
+  const handleRepeatChange = (value) => {
+    setRepeatFreq(value);
+    setIsModalOpen(false);
+  };
 
   const handleChange = (event) => {
     if (event.target.value === 'new') {
@@ -35,6 +47,11 @@ const AddTaskForm = (props) => {
 
         if (taskGroup === 'new') {
           alert('Please choose or create a group');
+          return;
+        }
+
+        if (newTaskName == null) {
+          alert('Fill task name.');
           return;
         }
 
@@ -94,6 +111,15 @@ const AddTaskForm = (props) => {
 
       <label htmlFor="critical"> Critical:</label>
       <input type="checkbox" name="critical" id="critical" />
+
+      <button type="button" onClick={handleOpenModal}>
+        <IoRepeat />
+      </button>
+      <p>Repeat: {repeatFreq || 'None Selected'}</p>
+
+      {isModalOpen && (
+        <RepeatModal onClose={handleCloseModal} onSelect={handleRepeatChange} />
+      )}
 
       <input name="date" aria-label="Date and time" type="datetime-local" />
 
