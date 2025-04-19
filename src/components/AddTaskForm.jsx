@@ -81,7 +81,7 @@ const AddTaskForm = (props) => {
         />
       </div>
 
-      <div>
+      <div className="group-div">
         <label htmlFor="group">Group:</label>
         <select name="group" id="group" onChange={handleChange}>
           {groups.map((group) => (
@@ -112,18 +112,22 @@ const AddTaskForm = (props) => {
       <label htmlFor="critical"> Critical:</label>
       <input type="checkbox" name="critical" id="critical" />
 
-      <button type="button" onClick={handleOpenModal}>
-        <IoRepeat />
-      </button>
-      <p>Repeat: {repeatFreq || 'None Selected'}</p>
-
       {isModalOpen && (
         <RepeatModal onClose={handleCloseModal} onSelect={handleRepeatChange} />
       )}
 
       <input name="date" aria-label="Date and time" type="datetime-local" />
 
-      <Button className="add__button" buttonText="Add Task" />
+      <div className="repeat-div">
+        <button
+          className={'add__button'}
+          type="button"
+          onClick={handleOpenModal}
+        >
+          {repeatFreq || 'Repeat'}
+        </button>
+      </div>
+      <Button className="create__button" buttonText="Add Task" />
     </form>
   );
 };

@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 
 function RepeatModal({onSelect, onClose}) {
@@ -15,11 +14,18 @@ function RepeatModal({onSelect, onClose}) {
         <ul>
           {options.map((option) => (
             <li key={option}>
-              <button onClick={() => handleSelect(option)}>{option}</button>
+              <button
+                className="add__button"
+                onClick={() => handleSelect(option)}
+              >
+                {option}
+              </button>
             </li>
           ))}
         </ul>
-        <button onClick={onClose}>Cancel</button>
+        <button className="button__delete" onClick={onClose}>
+          Cancel
+        </button>
       </div>
     </div>
   );
