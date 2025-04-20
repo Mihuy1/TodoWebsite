@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import Button from './Button';
-import {IoRepeat} from 'react-icons/io5';
 import {useState} from 'react';
 import RepeatModal from './RepeatModal';
 
@@ -9,7 +8,7 @@ const AddTaskForm = (props) => {
   const [showInput, setShowInput] = useState(false);
   const [newGroup, setNewGroup] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [repeatFreq, setRepeatFreq] = useState('');
+  const [repeatFreq, setRepeatFreq] = useState('Never');
 
   const handleOpenModal = () => setIsModalOpen(true);
   const handleCloseModal = () => setIsModalOpen(false);
@@ -44,6 +43,7 @@ const AddTaskForm = (props) => {
         const newTaskDate = event.target.date.value;
         const taskCritical = event.target.critical.checked;
         const taskGroup = event.target.group.value;
+        const taskRepeat = repeatFreq;
 
         if (taskGroup === 'new') {
           alert('Please choose or create a group');
@@ -61,6 +61,7 @@ const AddTaskForm = (props) => {
           newTaskDate,
           taskCritical,
           taskGroup,
+          taskRepeat,
         );
 
         event.target.reset();
@@ -120,6 +121,7 @@ const AddTaskForm = (props) => {
 
       <div className="repeat-div">
         <button
+          id="repeat"
           className={'add__button'}
           type="button"
           onClick={handleOpenModal}

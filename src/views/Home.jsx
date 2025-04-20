@@ -34,16 +34,17 @@ const Home = () => {
         setGroups={setGroups}
       />
       <div className={'main-task-container'}>
-      {filteredTodoArray.map((item) => (
-        <Task
-          key={item.id}
-          item={item}
-          handleEditTask={handleEditTask}
-          handleSaveTask={handleSaveTask}
-          handleDeleteTask={handleDeleteTask}
-          onStatusChange={onStatusChange}
-        />
-      ))}
+        {filteredTodoArray.map((item) => (
+          <Task
+            key={item.id}
+            item={item}
+            handleEditTask={handleEditTask}
+            handleSaveTask={handleSaveTask}
+            handleDeleteTask={handleDeleteTask}
+            onStatusChange={onStatusChange}
+            handleAddTask={handleAddTask}
+          />
+        ))}
       </div>
     </>
   );

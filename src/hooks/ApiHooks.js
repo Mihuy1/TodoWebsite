@@ -20,21 +20,34 @@ const useTask = () => {
     newTaskDate,
     taskCritical,
     taskGroup,
+    repeat,
+    initialStatus = false,
+    hasCreatedRepeat = false,
   ) => {
     const newTask = {
       id: todoArray.length + 1,
       name: newTaskName,
       details: newTaskDetails,
       date: newTaskDate,
-      status: false,
+      status: initialStatus,
       critical: taskCritical,
       group: taskGroup,
+      repeat: repeat,
+      hasCreatedRepeat: hasCreatedRepeat,
     };
     console.log('newTask', newTask);
-    setTodoArray([...todoArray, newTask]);
+    setTodoArray((currentTasks) => [...currentTasks, newTask]);
+    console.log('todoArray', todoArray);
   };
 
-  const handleSaveTask = (id, newName, newDetails, newCritical, newGroup) => {
+  const handleSaveTask = (
+    id,
+    newName,
+    newDetails,
+    newCritical,
+    newGroup,
+    repeat,
+  ) => {
     const updatedTasks = todoArray.map((task) =>
       task.id === id
         ? {
@@ -43,6 +56,7 @@ const useTask = () => {
             details: newDetails,
             critical: newCritical,
             group: newGroup,
+            repeat: repeat,
           }
         : task,
     );
@@ -58,6 +72,7 @@ const useTask = () => {
     newDate,
     newCritical,
     newGroup,
+    repeat,
   ) => {
     const updatedTasks = todoArray.map((task) =>
       task.id === id
@@ -68,6 +83,7 @@ const useTask = () => {
             date: newDate,
             critical: newCritical,
             group: newGroup,
+            repeat: repeat,
           }
         : task,
     );
@@ -80,11 +96,18 @@ const useTask = () => {
     setTodoArray(updatedTasks);
   };
 
-  const onStatusChange = (id, newStatus) => {
-    const updatedTasks = todoArray.map((task) =>
-      task.id === id ? {...task, status: newStatus} : task,
+  const onStatusChange = (id, newStatus, hasCreatedRepeat = undefined) => {
+    setTodoArray((currentTasks) =>
+      currentTasks.map((task) =>
+        task.id === id
+          ? {
+              ...task,
+              status: newStatus,
+              ...(hasCreatedRepeat !== undefined ? {hasCreatedRepeat} : {}),
+            }
+          : task,
+      ),
     );
-    setTodoArray(updatedTasks);
   };
 
   const sortTasksByDate = (tasks) => {
