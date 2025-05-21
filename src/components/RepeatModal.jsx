@@ -1,9 +1,20 @@
 import PropTypes from 'prop-types';
+import {useEffect, useState} from 'react';
 
-function RepeatModal({onSelect, onClose}) {
+function RepeatModal({initialValue, onSelect, onClose}) {
   const options = ['Daily', 'Weekly', 'Monthly', 'Never'];
+  const [selectedFrequency, setSelectedFrequency] = useState(
+    initialValue || 'Never',
+  );
+
+  useEffect(() => {
+    if (initialValue) {
+      setSelectedFrequency(initialValue);
+    }
+  }, [initialValue]);
 
   const handleSelect = (value) => {
+    setSelectedFrequency(value);
     onSelect(value);
   };
 

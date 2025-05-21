@@ -114,7 +114,11 @@ const AddTaskForm = (props) => {
       <input type="checkbox" name="critical" id="critical" />
 
       {isModalOpen && (
-        <RepeatModal onClose={handleCloseModal} onSelect={handleRepeatChange} />
+        <RepeatModal
+          initialValue={repeatFreq}
+          onClose={handleCloseModal}
+          onSelect={handleRepeatChange}
+        />
       )}
 
       <input name="date" aria-label="Date and time" type="datetime-local" />
