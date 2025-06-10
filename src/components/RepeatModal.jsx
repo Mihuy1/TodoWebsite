@@ -19,24 +19,26 @@ function RepeatModal({initialValue, onSelect, onClose}) {
   };
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <h2>Select Repeat Frequency</h2>
-        <ul>
-          {options.map((option) => (
-            <li key={option}>
-              <button
-                className="add__button"
-                onClick={() => handleSelect(option)}
-              >
-                {option}
-              </button>
-            </li>
-          ))}
-        </ul>
-        <button className="button__delete" onClick={onClose}>
-          Cancel
-        </button>
+    <div className="modal-container">
+      <div className="modal">
+        <div className="modal-content">
+          <h2>Select Repeat Frequency</h2>
+          <ul>
+            {options.map((option) => (
+              <li key={option}>
+                <button
+                  className="add__button"
+                  onClick={() => handleSelect(option)}
+                >
+                  {option}
+                </button>
+              </li>
+            ))}
+          </ul>
+          <button className="button__delete" onClick={onClose}>
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );
