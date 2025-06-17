@@ -2,7 +2,8 @@ import {Outlet} from 'react-router-dom';
 import './Layout.css';
 import Button from './Button';
 import {useGroup} from '../context/GroupContext.jsx';
-import image from '../assets/hamburger.png';
+import hamburger from '../assets/hamburger.png';
+import close from '../assets/x-letter.svg';
 import {useEffect, useState} from 'react';
 
 export const Layout = () => {
@@ -41,7 +42,11 @@ export const Layout = () => {
         onClick={toggleSideBar}
         aria-label="Toggle sidebar menu"
       >
-        <img className="hamburger" src={image} alt="Menu" />
+        <img
+          className="hamburger"
+          src={sidebarVisible ? close : hamburger}
+          alt="Menu"
+        />
       </button>
 
       <div className={`sidebar ${sidebarVisible ? 'visible' : 'hidden'}`}>
