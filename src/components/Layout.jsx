@@ -27,6 +27,12 @@ export const Layout = () => {
     setSidebarVisible(!sidebarVisible);
   };
 
+  const hideSidebar = () => {
+    if (window.innerWidth <= 1190) {
+      setSidebarVisible(false);
+    }
+  };
+
   const setGroupFunc = (group) => {
     setGroup(group);
     const buttons = document.querySelectorAll('.add__button');
@@ -58,7 +64,10 @@ export const Layout = () => {
                 // Also add the name of the group as a class name
                 // to the button element
                 buttonText="All"
-                onClick={() => setGroupFunc('all')}
+                onClick={() => {
+                  setGroupFunc('all');
+                  hideSidebar();
+                }}
               />
             </li>
             {groups.map((group) => (
@@ -66,7 +75,10 @@ export const Layout = () => {
                 <Button
                   className={`add__button ${group}`}
                   buttonText={group.charAt(0).toUpperCase() + group.slice(1)}
-                  onClick={() => setGroupFunc(group)}
+                  onClick={() => {
+                    setGroupFunc(group);
+                    hideSidebar();
+                  }}
                 />
               </li>
             ))}
